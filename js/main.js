@@ -41,16 +41,18 @@ $(function(){
 
     function initQuiz() {
         /* Vyprázdní obsah oddílu pro zobrazení kvízu */
-        $('#kviz div.row').html('');
+        var kviz = $('#kviz div.row');
+        kviz.html('');
         /* Prochází všechny objekty v poli prezidenti a vytváří blok s obrázkem a popiskem */
         prezidenti.forEach(function(obj, index) {
             /* Metoda append přidává do elementu další obsah -  tj. novou figuru s fotkou a popiskem */
-            $('#kviz div.row').append('<div class="col-md-4"><figure id="'+index+'"><img src="img/prezident0.jpg" alt="Foto prezidenta" class="img-fluid"><figcaption>'+obj.name+'</figcaption></figure></div>');
+            kviz.append('<div class="col-md-4"><figure id="'+index+'"><img src="img/prezident0.jpg" alt="Foto prezidenta" class="img-fluid"><figcaption>'+obj.name+'</figcaption></figure></div>');
             //$('#kviz div.row').append('<div class="col-md-4"><figure id="'+index+'"><img src="img/'+obj.photo+'" alt="'+obj.name+'"><figcaption>'+obj.name+'</figcaption></figure></div>');
         });    
     
         /* Událost při kliknutí na obrázek v sekci kviz */
-        $('#kviz figure img').on('click', function(event){
+        var photo = $('#kviz figure img');
+        photo.on('click', function(event){
             /* Vygeneruje náhodný index podle délky pole prezidenti */
             index = Math.floor(Math.random() * prezidenti.length);
             /* Změní atributy obrázku podle objektu, na který zrovna ukazuje proměnná index */
@@ -59,25 +61,26 @@ $(function(){
             /* Jestliže byla při vyvolání události stisknuta klávesa ALT */
             if (event.altKey) {
                 /* Změna titulku modálního okna - jméno prezidenta*/
-                $('.modal').find('.modal-title').text(prezidenti[index].name);
+                var modal = $('.modal');
+                modal.find('.modal-title').text(prezidenti[index].name);
                 /* Změna těla modálního okna - data narození a úmrtí, popis */
                 var modalBody = '<p>Narození: <b>' + prezidenti[index].borned + (prezidenti[index].died ? '</b>, úmrtí: <b>' + prezidenti[index].died : '') + '</b></p>';
                 modalBody +=  '<hr><p>' + prezidenti[index].description + '</p>';
-                $('.modal').find('.modal-body').html(modalBody);
+                modal.find('.modal-body').html(modalBody);
                 /* Zobrazení modálního okna, je možné jej také ovládat pomocí klávesnice */
-                $('.modal').modal({
+                modal.modal({
                     keyboard: true
                 });
             }
         });
     
         /* Při vstupu myši na fotku prezidenta se objeví žlutý rámeček */
-        $('#kviz figure img').on('mouseenter', function(){
+        photo.on('mouseenter', function(){
             $(this).css({'border':'3px solid yellow'});
         });
     
         /* Když myš opustí fotku prezidenta, rámeček zmizí */
-        $('#kviz figure img').on('mouseleave', function(){
+        photo.on('mouseleave', function(){
             $(this).css({'border':'none'});
         });
     }
