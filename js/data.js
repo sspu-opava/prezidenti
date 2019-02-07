@@ -80,7 +80,7 @@ var sidla = [
         'photo': 'prazsky-hrad.jpg'
     },
     {
-        'place':'Zámek Lány U Prahy',
+        'place':'Zámek Lány u Prahy',
         'description': 'Zámek Lány je barokní stavba, jež se nachází na jižním okraji obce Lány v okrese Kladno ve Středočeském kraji západně od Prahy. Zámek je situován na severním okraji rozsáhlých křivoklátských lesů (CHKO Křivoklátsko), jeho součástí je rozsáhlý anglický park, rybník Bahňák, velký palmový skleník a přilehlá Lánská obora. K zámku také patřil hospodářský dvůr. Od roku 1921 je zámek majetkem státu a stal se oficiálním letním sídlem prezidentů Československa, dnes prezidentů České republiky.',
         'photo': 'zamek-lany.jpg'
     },
